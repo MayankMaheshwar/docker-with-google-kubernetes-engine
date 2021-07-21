@@ -1,0 +1,28 @@
+Allow external traffic
+
+By default, the pod is only accessible by its internal IP within the cluster. In order to make the hello-node container accessible from outside the Kubernetes virtual network, you have to expose the pod as a Kubernetes service.
+
+From Cloud Shell you can expose the pod to the public internet with the kubectl expose command combined with the --type="LoadBalancer" flag. This flag is required for the creation of an externally accessible IP:
+
+kubectl expose deployment hello-node --type="LoadBalancer" --port=8080
+
+
+Scale up your service
+One of the powerful features offered by Kubernetes is how easy it is to scale your application. Suppose you suddenly need more capacity. You can tell the replication controller to manage a new number of replicas for your pod:
+
+kubectl scale deployment hello-node --replicas=4
+
+
+Roll out an upgrade to your service
+
+At some point the application that you've deployed to production will require bug fixes or additional features. Kubernetes helps you deploy a new version to production without impacting your users.
+
+First, modify the application by opening server.js:
+
+Then update the response message:
+
+response.end("Hello Kubernetes World!");
+
+docker build -t gcr.io/PROJECT_ID/hello-node:v2 .
+
+docker push gcr.io/PROJECT_ID/hello-node:v2

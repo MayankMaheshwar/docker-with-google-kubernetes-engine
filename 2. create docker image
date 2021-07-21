@@ -1,0 +1,11 @@
+vi Dockerfile
+
+FROM node:6.9.2
+EXPOSE 8080
+COPY server.js .
+CMD node server.js
+
+docker build -t gcr.io/PROJECT_ID/hello-node:v1 .
+
+docker run -d -p 8080:8080 gcr.io/PROJECT_ID/hello-node:v1
+

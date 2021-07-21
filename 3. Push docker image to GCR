@@ -1,0 +1,7 @@
+ image is working as intended, push it to the Google Container Registry, a private repository for your Docker images, accessible from your Google Cloud projects.
+
+
+gcloud auth configure-docker
+
+docker push gcr.io/PROJECT_ID/hello-node:v1
+
